@@ -1,8 +1,6 @@
 package com.kimoror.jwt.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -16,7 +14,7 @@ import java.util.Set;
 @Setter
 @Getter
 @AllArgsConstructor
-
+@NoArgsConstructor
 @Table(	schema = "jwt_auth", name = "users",
         uniqueConstraints = {
                 @UniqueConstraint(columnNames = "username"),
@@ -48,4 +46,10 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     Set<Role> roles = new HashSet<>();
+
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 }
