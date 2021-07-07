@@ -1,8 +1,6 @@
 package com.kimoror.jwt.models;
 
 import lombok.*;
-import org.hibernate.annotations.GeneratorType;
-
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +14,7 @@ public class Role {
     private Integer id;
 
     @Enumerated(EnumType.STRING)
+    @Column(length = 20)
     private ERole name;
 
     public Role(ERole name) {

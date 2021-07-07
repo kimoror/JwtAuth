@@ -43,9 +43,8 @@ public class User {
     @JoinTable(schema = "jwt_auth",
             name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    Set<Role> roles = new HashSet<>();
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+   private Set<Role> roles = new HashSet<>();
 
     public User(String username, String email, String password) {
         this.username = username;

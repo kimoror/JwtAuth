@@ -2,7 +2,6 @@ package com.kimoror.jwt.security.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kimoror.jwt.models.User;
-import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +14,6 @@ import java.util.stream.Collectors;
 /**
  * For getting data(id, email, username,password and other) from authentication
  */
-@AllArgsConstructor
 public class UserDetailsImpl implements UserDetails  {
 
     private static final long serialVersionUID = 1L;
@@ -29,6 +27,14 @@ public class UserDetailsImpl implements UserDetails  {
     @JsonIgnore
     private final String password;
 
+    public UserDetailsImpl(Long id, String username, String email, String password,
+			Collection<? extends GrantedAuthority> authorities) {
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.authorities = authorities;
+	}
 
 
     private final Collection<? extends GrantedAuthority> authorities;
@@ -89,6 +95,7 @@ public class UserDetailsImpl implements UserDetails  {
         return true;
     }
 
+    @Override
     public boolean equals(Object o){
         if(this == o)
             return true;

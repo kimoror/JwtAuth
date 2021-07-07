@@ -21,7 +21,7 @@ import java.util.Date;
 public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-    @Value("$kimoror.app.jwtSecret")
+    @Value("${kimoror.app.jwtSecret}")
     private String jwtSecret;
 
     @Value("${kimoror.app.jwtExpirationMs}")
@@ -35,7 +35,7 @@ public class JwtUtils {
         return Jwts.builder()
                 .setSubject(userPrincipal.getUsername())//We can also make the items mail.
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime() + jwtExpirationMs))
+                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }

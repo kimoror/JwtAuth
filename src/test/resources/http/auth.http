@@ -39,5 +39,33 @@ Content-Type: application/json
   "username": "userAndModer",
   "email": "userAndModer@kimoror.com",
   "password": "12345678",
-  "role": ["userAndModer"]
+  "role": ["user", "mod"]
 }
+
+###Login as moder
+POST http://{{app-server-url}}/api/auth/signin
+Content-Type: application/json
+
+{
+  "username": "mod",
+  "password": "12345678"
+}
+
+###Login as user
+POST http://{{app-server-url}}/api/auth/signin
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "12345678"
+}
+
+###Login as admin
+POST http://{{app-server-url}}/api/auth/signin
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "12345678"
+}
+
