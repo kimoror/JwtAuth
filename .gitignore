@@ -1,6 +1,6 @@
 HELP.md
 target/
-!.mvn/wrapper/maven-wrapper.jar
+!Backend/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -34,3 +34,24 @@ build/
 
 ### env ###
 env.env
+*.env.json
+
+###markdown###
+/Problems.md
+
+###vue###
+Frontend/vue/node_modules/
+Frontend/vue/.DS_Store
+Frontend/vue/dist
+
+# Log files
+Frontend/vue/npm-debug.log*
+Frontend/vue/yarn-debug.log*
+Frontend/vue/yarn-error.log*
+Frontend/vue/pnpm-debug.log*
+
+Frontend/vue/*.suo
+Frontend/vue/*.ntvs*
+Frontend/vue/*.njsproj
+Frontend/vue/*.sln
+Frontend/vue/*.sw?
