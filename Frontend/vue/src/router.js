@@ -1,54 +1,60 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Home from '@/views/Home';
-import Login from "@/views/Login";
-import Register from "@/views/Register";
+import { createWebHistory, createRouter } from "vue-router";
+import Home from '@/components/Home';
+import Login from "@/components/Login";
+import Register from "@/components/Register";
+//lazy loaded
+const Profile = () => import("./components/Profile")
+const BoardAdmin = () => import("./components/BoardAdmin")
+const BoardModerator = () => import("./components/BoardModerator")
+const BoardUser = () => import("./components/BoardUser")
 
-Vue.use(Router);
+const routes = [
+    {
+        path: "/",
+        name: "home",
+        component: Home,
+    },
+    {
+        path: "/home",
+        component: Home,
+    },
+    {
+        path: "/login",
+        component: Login,
+    },
+    {
+        path: "/register",
+        component: Register,
+    },
+    {
+        path: "/profile",
+        name: "profile",
+        // lazy-loaded
+        component: Profile,
+    },
+    {
+        path: "/admin",
+        name: "admin",
+        // lazy-loaded
+        component: BoardAdmin,
+    },
+    {
+        path: "/mod",
+        name: "moderator",
+        // lazy-loaded
+        component: BoardModerator,
+    },
+    {
+        path: "/user",
+        name: "user",
+        // lazy-loaded
+        component: BoardUser,
+    },
+];
 
-export const router = new Router({
-    mode: 'history',
-    routes: [
-        {
-            path: '/',
-            name:'home',
-            component: Home
-        },
-        {
-            path: '/home',
-            component: Home
-        },
-        {
-            path: '/login',
-            component: Login
-        },
-        {
-            path: '/register',
-            component: Register
-        },
-        {
-            path: '/profile',
-            name: 'profile',
-            //lazy loaded
-            component:() => import('./views/Profile')
-        },
-        {
-            path: '/admin',
-            name: 'admin',
-            //lazy loaded
-            component:() => import('./views/BoardAdmin')
-        },
-        {
-            path: '/mod',
-            name: 'moderator',
-            //lazy loaded
-            component:() => import('./views/BoardModerator')
-        },
-        {
-            path: '/user',
-            name: 'user',
-            //lazy loaded
-            component:() => import('./views/BoardUser')
-        }
-    ]
-})
+const router = createRouter({
+    history: createWebHistory(),
+    routes,
+});
+
+export default router;
