@@ -17,7 +17,7 @@ This is my practice in using Spring security.
 ## Logics
 Some mappings of my site are not available for non-authenticated users
 
-The user can register. Its data is stored in the database of my local database (PostgreSQL).
+The user can register. Its data is stored in the database of my local database.
 After registration, he can go to the site and see previously unavailable information.
 
 ## Stack
