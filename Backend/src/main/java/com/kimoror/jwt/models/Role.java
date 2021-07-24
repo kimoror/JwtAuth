@@ -4,9 +4,8 @@ import lombok.*;
 import javax.persistence.*;
 
 
-//@Table(schema = "jwt_auth", name = "roles")
+@Table(schema = "jwt_auth", name = "roles")
 @Entity
-@Table(name = "roles")
 @Setter
 @Getter
 @NoArgsConstructor
